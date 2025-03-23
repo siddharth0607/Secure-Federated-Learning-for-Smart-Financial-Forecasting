@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Expense Tracker{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="flex"> 
+        <!-- Sidebar -->
+        <div class="bg-purple-700 text-white w-64 min-h-screen p-4">
+            <div class="text-2xl font-bold mb-8">ExpenseWise</div>
+            <nav>
+                <ul>
+                    <li class="mb-4">
+                        <a class="hover:text-gray-300" href="{% url 'home' %}">Dashboard</a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="hover:text-gray-300" href="{% url 'fraud_alerts' %}">Fraud Alerts</a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="hover:text-gray-300" href="#">Expenses</a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="hover:text-gray-300" href="#">Income</a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="hover:text-gray-300" href="#">Forecast Expenses</a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="hover:text-gray-300" href="#">Expense Summary</a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="hover:text-gray-300" href="#">Income Summary</a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="hover:text-gray-300" href="#">General</a>
+                    </li>
+                    <li class="mb-4">
+                        <a class="hover:text-gray-300" href="{% url 'home' %}">Home</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Main Content -->
+        <div class="flex-1 p-6">
+            {% block content %}
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold">Dashboard</h1>
+                <button class="bg-purple-700 text-white px-4 py-2 rounded">Generate Report</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="bg-white p-4 rounded shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-gray-600">Earnings (Daily)</h2>
+                            <p class="text-2xl font-bold">&#8377; 500.0</p>
+                        </div>
+                        <i class="fas fa-calendar-alt text-gray-400 text-2xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-gray-600">Earnings (Weekly)</h2>
+                            <p class="text-2xl font-bold">&#8377; 10,500.0</p>
+                        </div>
+                        <i class="fas fa-dollar-sign text-gray-400 text-2xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-gray-600">Earnings (Monthly)</h2>
+                            <p class="text-2xl font-bold">&#8377; 60,800.0</p>
+                        </div>
+                        <i class="fas fa-calendar text-gray-400 text-2xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-gray-600">Earnings (Yearly)</h2>
+                            <p class="text-2xl font-bold">&#8377; 608,000.0</p>
+                        </div>
+                        <i class="fas fa-wallet text-gray-400 text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Fraud Prediction - Expense Tracker{% endblock %}
+
+{% block content %}
+<div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold">Fraud Detection</h1>
+    <div class="flex items-center">
+        <i class="fas fa-user-circle text-2xl mr-2"></i>
+        <span>User</span>
+        <a href="{% url 'logout' %}" class="ml-4 bg-red-500 text-white py-2 px-4 rounded">Logout</a>
+    </div>
+</div>
+
+<!-- Fraud Detection Section -->
+<div class="mb-8">
+    <h2 class="text-xl font-bold mb-4">Check Fraudulent Transactions</h2>
+    <p class="text-gray-600 mb-4">Enter transaction details to check if it's fraudulent.</p>
+
+    <form id="fraudForm">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="amount" class="block mb-2">Transaction Amount:</label>
+            <input type="number" step="0.01" name="amount" required class="w-full p-2 border border-gray-300 rounded">
+        </div>
+        <div class="mb-4">
+            <label for="category" class="block mb-2">Category:</label>
+            <input type="text" name="category" required class="w-full p-2 border border-gray-300 rounded">
+        </div>
+        <button type="submit" class="mt-4 bg-red-600 text-white py-2 px-4 rounded">Check Fraud</button>
+    </form>
+
+    <!-- Result Box -->
+    <div id="fraudResult" class="mt-4 p-4 border rounded hidden"></div>
+</div>
+
+<!-- AJAX for Fraud Detection -->
+<script>
+    document.getElementById("fraudForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let amount = document.querySelector('[name="amount"]').value;
+        let category = document.querySelector('[name="category"]').value;
+        let csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        fetch("{% url 'fraud_predict' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrfToken
+            },
+            body: JSON.stringify({ amount: amount, category: category })
+        })
+        .then(response => response.json())
+        .then(data => {
+            let resultDiv = document.getElementById("fraudResult");
+            resultDiv.classList.remove("hidden");
+            resultDiv.textContent = "Prediction: " + data.result;
+            resultDiv.classList.add(data.result === "Fraudulent" ? "bg-red-500" : "bg-green-500");
+        })
+        .catch(error => console.error("Error:", error));
+    });
+</script>

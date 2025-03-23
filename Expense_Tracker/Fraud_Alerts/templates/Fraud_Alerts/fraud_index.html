@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Fraud Alerts - Expense Tracker{% endblock %}
+
+{% block content %}
+<div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold">Income-Expense Report</h1>
+    <div class="flex items-center">
+        <i class="fas fa-user-circle text-2xl mr-2"></i>
+        <span>User</span>
+        <!-- Logout Button -->
+        <a href="{% url 'logout' %}" class="ml-4 bg-red-500 text-white py-2 px-4 rounded">Logout</a>
+    </div>
+</div>
+
+<!-- Fraud Detection Section (Modified to remove functionality that's not yet implemented) -->
+<div class="mb-8">
+    <h2 class="text-xl font-bold mb-4">Check Fraudulent Transactions</h2>
+    <p class="text-gray-600 mb-4">Fraud detection functionality coming soon!</p>
+    <!-- Placeholder form without the fetch request -->
+    <form id="fraudForm">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="amount" class="block mb-2">Transaction Amount:</label>
+            <input type="number" step="0.01" name="amount" required class="w-full p-2 border border-gray-300 rounded">
+        </div>
+        <div class="mb-4">
+            <label for="category" class="block mb-2">Category:</label>
+            <input type="text" name="category" required class="w-full p-2 border border-gray-300 rounded">
+        </div>
+        <a href="{% url 'fraud_predict' %}" class="mt-4 bg-red-600 text-white py-2 px-4 rounded inline-block">Check Fraud</a>
+    </form>
+
+    <!-- Result Box (Hidden) -->
+    <div id="fraudResult" class="mt-4 p-4 border rounded text-white hidden"></div>
+</div>
+
+<!-- Export & Reports Section -->
+<div>
+    <h2 class="text-xl font-bold mb-4">Export Options:</h2>
+    <div class="flex space-x-4">
+        <button class="bg-green-500 text-white py-2 px-4 rounded">Export as PDF</button>
+        <button class="bg-purple-500 text-white py-2 px-4 rounded">Export as CSV</button>
+        <button class="bg-orange-500 text-white py-2 px-4 rounded">Export as XLSX</button>
+    </div>
+</div>
+
+<!-- Modified JavaScript (removed fetch to nonexistent URL) -->
+<script>
+    document.getElementById("fraudForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert('Fraud detection feature is under development. Please check back later.');
+    });
+</script>
+
+{% endblock %}

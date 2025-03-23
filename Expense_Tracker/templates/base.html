@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Landing Page{% endblock %}</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    {% block extra_head %}
+    {% endblock %}
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header Section -->
+    <header class="bg-purple-600 h-1/4 flex items-center justify-center">
+        <h1 class="text-yellow-400 text-4xl font-bold">EXPENSE_TRACKER</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="bg-white py-20">
+        {% block content %}
+        <!-- Content will be injected here from child templates -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-6">
+        <div class="container mx-auto text-center text-white">
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="hover:text-gray-400"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#" class="hover:text-gray-400"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" class="hover:text-gray-400"><i class="fab fa-facebook"></i> Facebook</a>
+            </div>
+            <p class="mt-4">&copy; 2023 ExpenseWise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    {% block extra_js %}
+    {% endblock %}
+</body>
+
+</html>

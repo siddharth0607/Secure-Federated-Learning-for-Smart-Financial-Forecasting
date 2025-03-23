@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Expense Tracker{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto text-center">
+        <div class="bg-gray-100 p-10 rounded shadow-lg inline-block">
+            <!-- Link to the login page -->
+            <a href="{% url 'login' %}" class="bg-purple-600 text-white px-6 py-3 rounded hover:bg-purple-700 mx-2">Login</a>
+
+            <!-- Link to the signup page (can link to another URL if needed) -->
+            <a href="{% url 'signup' %}" class="bg-white text-purple-600 px-6 py-3 rounded hover:bg-gray-200 mx-2">Sign Up</a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="py-20">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded shadow">
+                    <i class="fas fa-chart-line text-purple-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Track Expenses</h3>
+                    <!-- Link to track expenses page -->
+                    <a href="{% url 'track_expenses' %}" class="text-blue-500 hover:underline">Click to track your expenses</a>
+                </div>
+                <div class="bg-white p-6 rounded shadow">
+                    <i class="fas fa-wallet text-purple-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Manage Income</h3>
+                    <p class="text-gray-600">Keep a record of your income sources and monitor your earnings.</p>
+                </div>
+                <div class="bg-white p-6 rounded shadow">
+                    <i class="fas fa-file-export text-purple-600 text-4xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">fraud_alerts</h3>
+                    <a href="{% url 'fraud_alerts' %}" class="text-blue-500 hover:underline">alerts on your reports</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+
