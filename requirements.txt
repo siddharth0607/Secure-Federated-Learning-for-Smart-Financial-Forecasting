@@ -5,3 +5,8 @@ seaborn
 scikit-learn
 imbalanced-learn
 tensorflow-cpu
+psycopg2
+asgiref
+django
+sqlparse
+tzdata
