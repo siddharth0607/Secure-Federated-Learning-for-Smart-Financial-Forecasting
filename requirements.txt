@@ -1,10 +1,7 @@
 pandas
 numpy
 matplotlib
-seaborn
 imbalanced-learn
-scikit-learn
-xgboost
 django
 sqlparse
 tzdata
