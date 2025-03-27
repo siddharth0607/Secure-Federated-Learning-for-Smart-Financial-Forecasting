@@ -1,12 +1,10 @@
-numpy
 pandas
+numpy
 matplotlib
 seaborn
-scikit-learn
 imbalanced-learn
-tensorflow-cpu
-psycopg2
-asgiref
+scikit-learn
+xgboost
 django
 sqlparse
 tzdata
