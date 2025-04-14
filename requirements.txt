@@ -5,3 +5,7 @@ imbalanced-learn
 django
 sqlparse
 tzdata
+flwr
+xgboost
+faker
+flwr[simulation]
